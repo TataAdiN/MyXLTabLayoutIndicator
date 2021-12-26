@@ -7,8 +7,8 @@
         <entry key="..\:/Android/TabLayout/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2520833333333333" />
         <entry key="..\:/Android/TabLayout/app/src/main/res/drawable/tab_bg.xml" value="0.1" />
         <entry key="..\:/Android/TabLayout/app/src/main/res/layout/activity_main.xml" value="0.176" />
-        <entry key="..\:/Android/TabLayout/app/src/main/res/layout/fragment_one.xml" value="0.1" />
-        <entry key="..\:/Android/TabLayout/app/src/main/res/layout/fragment_two.xml" value="0.1" />
+        <entry key="..\:/Android/TabLayout/app/src/main/res/layout/fragment_one.xml" value="0.4" />
+        <entry key="..\:/Android/TabLayout/app/src/main/res/layout/fragment_two.xml" value="0.536" />
       </map>
     </option>
   </component>

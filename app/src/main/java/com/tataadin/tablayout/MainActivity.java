@@ -8,8 +8,10 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
-    private String[] tabTitle = new String[]{"Tab One", "Tab Two"};
+    private final String[] tabTitle = new String[]{"Tab One", "Tab Two"};
     private ViewPager2 viewPager2;
     private TabLayout tabLayout;
     private View indicator;
@@ -29,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        getSupportActionBar().setElevation(0);
+        //remove actionbar shadow
+        Objects.requireNonNull(getSupportActionBar()).setElevation(0);
         viewPager2.setAdapter(new TabFragmentAdapter(this));
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) ->
                 tab.setText(tabTitle[position])).attach();
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 int indicatorWidth = tabLayout.getWidth() / tabLayout.getTabCount();
                 FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)indicator.getLayoutParams();
 
-                //Multiply positionOffset with indicatorWidth to get translation
+                //make width following transition to make smooth animation
                 float translationOffset =  (positionOffset+position) * indicatorWidth ;
                 params.leftMargin = (int) translationOffset;
                 indicator.setLayoutParams(params);
@@ -51,12 +54,11 @@ public class MainActivity extends AppCompatActivity {
                 super.onPageSelected(position);
                 int indicatorWidth = tabLayout.getWidth() / tabLayout.getTabCount();
 
-                //Assign new width
+                //make width match to selection Tab
                 FrameLayout.LayoutParams indicatorParams = (FrameLayout.LayoutParams) indicator.getLayoutParams();
                 indicatorParams.width = indicatorWidth;
                 indicatorParams.setMarginStart(40);
                 indicator.setLayoutParams(indicatorParams);
-                indicator.setPadding(40, 10,10,10);
             }
 
             @Override
