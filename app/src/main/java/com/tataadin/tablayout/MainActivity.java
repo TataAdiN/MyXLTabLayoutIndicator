@@ -1,11 +1,7 @@
 package com.tataadin.tablayout;
 
-import android.content.res.ColorStateList;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.viewpager2.widget.ViewPager2;
@@ -13,9 +9,10 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity {
-private ViewPager2 viewPager2;
-private TabLayout tabLayout;
-private View indicator;
+    private String[] tabTitle = new String[]{"Tab One", "Tab Two"};
+    private ViewPager2 viewPager2;
+    private TabLayout tabLayout;
+    private View indicator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +32,7 @@ private View indicator;
         getSupportActionBar().setElevation(0);
         viewPager2.setAdapter(new TabFragmentAdapter(this));
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) ->
-                tab.setText("Fragment")).attach();
+                tab.setText(tabTitle[position])).attach();
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -60,7 +57,6 @@ private View indicator;
                 indicatorParams.setMarginStart(40);
                 indicator.setLayoutParams(indicatorParams);
                 indicator.setPadding(40, 10,10,10);
-                Log.d("Margin : ", ""+indicator.getPaddingStart());
             }
 
             @Override
